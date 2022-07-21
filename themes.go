@@ -1,14 +1,11 @@
 package main
 
-import "log"
-
 func (card *Card) applyTheme() {
 	themeCard, themeExists := Themes[card.Theme]
 	if card.Theme == "" || !themeExists {
 		card.BackgroundColor = themeCard.BackgroundColor
 		return
 	}
-	log.Printf("applying custom theme with bgc: %s", themeCard.BackgroundColor)
 }
 
 func loadThemes() {
@@ -16,10 +13,11 @@ func loadThemes() {
 
 	Themes["drucksache"] = Card{
 		Title:           "Drucksache",
-		BackgroundColor: "todo",
+		BackgroundColor: "drucksacherot",
 	}
 
 	Themes["duden"] = Card{
-		Title: "FAKE-Duden",
+		Title:           "FAKE-Duden",
+		BackgroundColor: "dudengelb",
 	}
 }

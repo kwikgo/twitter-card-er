@@ -29,7 +29,9 @@
         border: 2px solid #888;
         padding:0;
         margin:1em;
-        font-family: Roboto, Helvetica, Arial, sans-serif;        
+        font-family: Roboto, Helvetica, Arial, sans-serif;  
+        width:504px;
+        margin: auto;      
     }
     p.caption {
         background-color: white;
@@ -39,7 +41,12 @@
     }
     div.previewbox img {
         width: 500px;
-        padding:1em;
+        padding:0;
+        margin:2px;
+        background-color: aqua;
+    }
+    div.previewbox span.domain {
+        color:#000;
     }
     div.previewbox span.title {
         color: #888;
@@ -62,6 +69,7 @@
     <div class="previewbox">
         <img src="{{ .BaseURL }}/png/?{{ .QueryString }}">
         <p class="caption">
+            <span class="domain">{{ .Domain }}</span><br>
             <span class="title">{{ .Title }}</span><br>
             <span class="description">{{ .Description }}</span>
         </p>
@@ -75,7 +83,7 @@
         Description <input type="text" value="{{ .Description }}" name="description"><br>
         Backdrop <input type="text" value="{{ .Backdrop }}" name="backdrop"><br>
         Theme 
-        <select>
+        <select name="theme">
             <option value="">None</option>
             <option value="duden">Dûden</option>
             <option value="drucksache">Drucksache</option>

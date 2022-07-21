@@ -9,6 +9,7 @@ type Card struct {
 	Description     string
 	Site            string
 	BaseURL         string
+	Domain          string
 	TextColor       string
 	BackgroundColor string
 	Backdrop        string
@@ -25,6 +26,7 @@ func urlParamsToCard(r *http.Request) Card {
 		TextColor:       thisOrThat(r.URL.Query().Get("textcolor"), defaults.TextColor),
 		BackgroundColor: thisOrThat(r.URL.Query().Get("backgroundcolor"), defaults.Backdrop),
 		Backdrop:        thisOrThat(r.URL.Query().Get("backdrop"), defaults.Backdrop),
+		Domain:          thisOrThat(r.URL.Query().Get("domain"), defaults.Domain),
 		Theme:           thisOrThat(r.URL.Query().Get("theme"), ""),
 		QueryString:     r.URL.RawQuery,
 	}

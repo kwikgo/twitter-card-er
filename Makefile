@@ -7,7 +7,7 @@ $(BIN): *.go
 	go build
 
 run: all
-	env TCE_BASEURL=http://localhost:9911 $(BIN)
+	env TCE_BASEURL=http://localhost:9911 TCE_DOMAIN=localhost $(BIN)
 
 install:
 	go install
