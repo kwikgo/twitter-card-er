@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	//go:embed index.html
+	//go:embed card_template.html
 	indexHTML string
 	defaults  Card
 )
