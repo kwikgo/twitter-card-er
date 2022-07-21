@@ -13,9 +13,80 @@
 <meta name="twitter:title" content="{{ .Title }}" />
 <meta name="twitter:description" content="{{ .Description }}" />
 <meta name="twitter:image" content="{{ .BaseURL }}/png/?{{ .QueryString }}" />
+<style type="text/css">
+    body { 
+        background: #222; 
+        color: #ddd;
+        width: 600px;
+        margin:auto;
+    }
+    a {
+        color: orange;
+    }
+    div.previewbox { 
+        background:#444;
+        color: black; 
+        border: 2px solid #888;
+        padding:0;
+        margin:1em;
+        font-family: Roboto, Helvetica, Arial, sans-serif;        
+    }
+    p.caption {
+        background-color: white;
+        height: 4em;
+        margin:0;
+        padding:1em;
+    }
+    div.previewbox img {
+        width: 500px;
+        padding:1em;
+    }
+    div.previewbox span.title {
+        color: #888;
+    }
+    div.previewbox span.description {
+        color: #111;
+    }
+    input {
+        margin: 0.5em;
+    }
+</style>
 </head>
 <body>
-    <h1>Peace - Just this page's twitter card. #FreeAssange</h1>
-    <img src="{{ .BaseURL }}/png/?{{ .QueryString }}">
+    <h1>Peace - <a href="https://martinsonneborn.de/assange/">#FreeAssange</a></h1>
+    <hr>
+    <h2>Your free, rough twitter card preview!</h2>
+    Only the box below will be shown on <a href="https://twitter.com/">twitter.com</a>.
+    This sourrounding content is only visible to you, the ivestigative reporter. Cheers!
+    <hr>
+    <div class="previewbox">
+        <img src="{{ .BaseURL }}/png/?{{ .QueryString }}">
+        <p class="caption">
+            <span class="title">{{ .Title }}</span><br>
+            <span class="description">{{ .Description }}</span>
+        </p>
+    </div>    
+    <hr>
+    Generate your own twitter card here ...
+    <form>
+        <!-- todo: label for=id -->
+        Site <input type="text" value="{{ .Site }}" name="site"><br>
+        Title <input type="text" value="{{ .Title }}" name="title"><br>        
+        Description <input type="text" value="{{ .Description }}" name="description"><br>
+        Backdrop <input type="text" value="{{ .Backdrop }}" name="backdrop"><br>
+        Theme 
+        <select>
+            <option value="">None</option>
+            <option value="duden">Dûden</option>
+            <option value="drucksache">Drucksache</option>
+        </select><br>
+        <!-- todo: list built-in backdrops, mention https:// :) -->
+        <input type="submit">
+    </form>
+    After submission, copy-paste the resulting URL into a tweet - voilà, enjoy! - Or <a href="{{ .BaseURL }}">reset form</a>.
+    <hr>
+    For educational purposes only. Source:
+    <a href="https://kwikgo.github.io/twitter-card-er/">twitter-card-er on github</a>.<br>
+    Learn more on <a href="https://sproutsocial.com/insights/twitter-cards/">SproutSocial - Twitter Cards: Everything you need to know</a>
 </body>
 </html>

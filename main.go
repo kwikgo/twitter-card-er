@@ -13,9 +13,12 @@ var (
 	//go:embed card_template.html
 	indexHTML string
 	defaults  Card
+	Themes    map[string]Card
 )
 
 func main() {
+	loadThemes()
+
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/png/", pngHandler)
 
@@ -36,6 +39,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 func pngHandler(w http.ResponseWriter, r *http.Request) {
 	card := urlParamsToCard(r)
+	card.applyTheme()
 	png := mkImage(card)
 	w.Header().Add("content-type", "image/png")
 	w.Write(png.Bytes())

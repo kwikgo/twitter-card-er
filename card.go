@@ -1,6 +1,8 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+)
 
 type Card struct {
 	Title           string
@@ -11,6 +13,7 @@ type Card struct {
 	BackgroundColor string
 	Backdrop        string
 	QueryString     string
+	Theme           string
 }
 
 func urlParamsToCard(r *http.Request) Card {
@@ -22,6 +25,7 @@ func urlParamsToCard(r *http.Request) Card {
 		TextColor:       thisOrThat(r.URL.Query().Get("textcolor"), defaults.TextColor),
 		BackgroundColor: thisOrThat(r.URL.Query().Get("backgroundcolor"), defaults.Backdrop),
 		Backdrop:        thisOrThat(r.URL.Query().Get("backdrop"), defaults.Backdrop),
+		Theme:           thisOrThat(r.URL.Query().Get("theme"), ""),
 		QueryString:     r.URL.RawQuery,
 	}
 }
